@@ -1,49 +1,49 @@
 # Personal Academic CV Template
 
-面向计算机研究生与欧洲 PhD 申请的个人学术 CV 模板：保留 Xovee 的简洁单栏版式，加入 CurVe 启发的论文管理方式。
+A minimal academic CV template for Computer Science graduate students applying to PhD programmes in Europe. It combines Xovee's single-column layout with publication management inspired by CurVe.
 
-**全部姓名、学校、经历和论文均为示例。填写真实信息并核实后，再用于申请。**
+**All names, institutions, experiences and publications are examples. Replace and verify them before using this template for an application.**
 
-## 特点
+## Features
 
-- A4、11 pt、黑白、单栏；联系方式与作品链接可点击。
-- 同一份 `.bib` 论文库管理全部成果，分别输出已发表、已接收、预印本和在审稿件。
-- 申请精选版和完整维护版共享同一组内容；不自动缩字或截断页数。
-- 支持本人作者加粗、共同一作及通讯作者标记，提供同名作者的手动覆盖方式。
-- 个人信息、经历栏目和论文分开维护；附数据检查工具。
+- A4 paper, 11 pt text, a black-and-white single-column layout, and clickable contact and project links.
+- One `.bib` database for published papers, accepted papers, preprints and manuscripts under review, displayed in separate groups.
+- Selected application and full master versions share the same source files, with consistent typography and natural pagination as content changes.
+- Author-name highlighting, equal-contribution and corresponding-author markers, with explicit overrides for ambiguous names.
+- Separate files for personal details, experience sections and publications, plus a bibliography data checker.
 
-## 快速使用
+## Quick Start
 
-1. 选择 **Code → Download ZIP**，在 Overleaf 中通过 **Upload Project** 导入；或克隆后本地编译。
-2. 在 `profile.tex` 中修改姓名、联系方式、个人链接和作者姓名别名。
-3. 替换 `sections/` 与 `publications.bib` 中的示例内容。
-4. 申请精选版主文件为 `main.tex`；完整维护版主文件为 `cv-full.tex`。使用 pdfLaTeX + Biber。
-5. 完成替换后，在 `cv-settings.tex` 中设置 `\CVTemplatefalse`，关闭示例提示。
+1. Select **Code → Download ZIP**, then import the archive into Overleaf using **Upload Project**. Alternatively, clone the repository and compile locally.
+2. Edit `profile.tex` to update your name, contact details, personal links and author-name aliases.
+3. Replace the example content in `sections/` and `publications.bib`.
+4. Use `main.tex` for the selected application version, or `cv-full.tex` for the full master version. Compile with pdfLaTeX and Biber.
+5. After replacing all example content, set `\CVTemplatefalse` in `cv-settings.tex` to hide the template notice.
 
-详细操作、状态标签与姓名消歧规则见 [中文使用说明](README-中文.md)。本地可运行 `./build.ps1` 同时生成两版 PDF。
+See the [detailed usage guide (Chinese)](README-中文.md) for configuration, publication status tags and author-name disambiguation. For local builds, run `./build.ps1` to generate both PDFs.
 
-## 预览
+## Preview
 
-[申请精选版 PDF](output/pdf/cv-selected.pdf) · [完整维护版 PDF](output/pdf/cv-full.pdf)
+[Selected application CV](output/pdf/cv-selected.pdf) · [Full master CV](output/pdf/cv-full.pdf)
 
-当前示例两版均为两页。实际页数由填写内容决定，提交时以目标项目的规定为准。
+Both example versions currently span two pages. Your actual page count depends on the content; follow the requirements of the programme you are applying to.
 
-![申请精选版第一页预览](output/preview/selected-1.png)
+![First-page preview of the selected application CV](output/preview/selected-1.png)
 
-## 文件结构
+## Project Structure
 
-| 文件 | 用途 |
+| File | Purpose |
 | --- | --- |
-| `profile.tex` | 个人信息与作者姓名别名 |
-| `cv-settings.tex` | 内容显示与模板提示开关 |
-| `main.tex` / `cv-full.tex` | 精选版 / 完整版入口 |
-| `sections/` | 教育、研究、奖励、技能等栏目 |
-| `publications.bib` | 唯一论文库 |
-| `personal-cv.sty` | 定制版式与论文管理规则 |
-| `tools/check_data.py` | 状态缺失、状态冲突和重复键检查 |
+| `profile.tex` | Personal details and author-name aliases |
+| `cv-settings.tex` | Content visibility and template-notice settings |
+| `main.tex` / `cv-full.tex` | Entry points for the selected and full versions |
+| `sections/` | Education, research, awards, skills and other sections |
+| `publications.bib` | Single publication database |
+| `personal-cv.sty` | Custom layout and publication-management rules |
+| `tools/check_data.py` | Checks for missing or conflicting status tags and duplicate keys |
 
-## 验证与来源
+## Validation and Sources
 
-示例已使用本地 TeX Live + Biber 编译，并检查论文筛选、作者字体及 PDF 排版；未向 Overleaf 上传验证。源码中不包含申请人的真实履历。
+The examples were compiled locally with TeX Live and Biber. Publication filtering, author-name formatting and PDF layout were checked. Overleaf upload and compilation have not been tested. The included content is illustrative rather than an applicant's actual CV.
 
-视觉基础来自 [Xovee's CV Template](https://github.com/Xovee/latex-cv)，保留其原样式与 [MIT 许可证](LICENSE-Xovee.txt)。论文管理方式参考 [A Customised CurVe CV](https://www.overleaf.com/latex/templates/a-customised-curve-cv/mvmbhkwsnmwv)，没有混用其文档类。详见 [来源与许可说明](SOURCES-AND-LICENSES.md)。
+The visual foundation is [Xovee's CV Template](https://github.com/Xovee/latex-cv); its original style file and [MIT license](LICENSE-Xovee.txt) are retained. Publication management was inspired by [A Customised CurVe CV](https://www.overleaf.com/latex/templates/a-customised-curve-cv/mvmbhkwsnmwv); this project does not use the CurVe document class. See [sources and licensing](SOURCES-AND-LICENSES.md) for details.

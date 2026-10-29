@@ -81,7 +81,7 @@ author+an = {1=me,cofirst; 2=notme; 3=corresponding},
 ```
 
 - 作者从 1 开始编号；`me` 强制本人加粗，`notme` 强制普通字体，且 `notme` 优先。
-- `cofirst` 显示共同一作符号；`corresponding` 显示通讯作者符号。
+- `cofirst` 显示共同一作符号 `*`；`corresponding` 显示通讯作者符号 `†`。
 - 一个作者有多个标记时，用逗号连接在同一项内。
 - **修改作者顺序后同步修改位置编号。** 自动识别不能凭缩写判断现实身份。
 

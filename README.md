@@ -9,7 +9,7 @@ A minimal academic CV template for Computer Science graduate students applying t
 - A4 paper, 11 pt text, a black-and-white single-column layout, and clickable contact and project links.
 - One `.bib` database for published papers, accepted papers, preprints and manuscripts under review, displayed in separate groups.
 - Selected application and full master versions share the same source files, with consistent typography and natural pagination as content changes.
-- Author-name highlighting, equal-contribution and corresponding-author markers, with explicit overrides for ambiguous names.
+- Author-name highlighting, equal-contribution (`*`) and corresponding-author (`†`) markers, with explicit overrides for ambiguous names.
 - Separate files for personal details, experience sections and publications, plus a bibliography data checker.
 
 ## Quick Start

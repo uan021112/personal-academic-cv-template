@@ -34,6 +34,9 @@
  \begin{itemize}[leftmargin=1.2em,itemsep=1pt,parsep=0pt,topsep=2pt]
 }{\end{itemize}}
 \renewcommand{\cvdistinction}[1]{\textbf{#1}}
+% Shared author markers: co-first authors use *, corresponding authors use dagger.
+\renewcommand{\equalcontrib}{\textsuperscript{*}}
+\renewcommand{\corresponding}{\textsuperscript{\ensuremath{\dagger}}}
 \renewcommand{\makecvheader}{%
  \thispagestyle{plain}%
  {\LARGE\bfseries\CVName}\par\vspace{3pt}%
@@ -74,8 +77,8 @@
  \ifitemannotation{me}{\booltrue{cvowner}}{}%
  \ifitemannotation{notme}{\boolfalse{cvowner}}{}%
  \ifbool{cvowner}{\mkbibbold{#1}}{#1}%
- \ifitemannotation{cofirst}{\textsuperscript{\ensuremath{\dagger}}}{}%
- \ifitemannotation{corresponding}{\textsuperscript{*}}{}%
+ \ifitemannotation{cofirst}{\equalcontrib}{}%
+ \ifitemannotation{corresponding}{\corresponding}{}%
  \endgroup
 }
 \defbibcheck{cvselection}{\ifCVFull\else\ifkeyword{selected}{}{\skipentry}\fi}

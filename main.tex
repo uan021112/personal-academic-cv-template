@@ -1,0 +1,18 @@
+% Personal academic CV. Default: selected application version.
+% Compile with pdfLaTeX + Biber (latexmk detects Biber automatically).
+\documentclass[11pt,a4paper]{article}
+\usepackage{personal-cv}
+\input{profile}
+\input{cv-settings}
+\addbibresource{publications.bib}
+\begin{document}
+\makecvheader
+\cvtemplatebanner
+\input{sections/education}
+\input{sections/research}
+\input{sections/publications}
+\input{sections/awards}
+\input{sections/skills}
+\input{sections/service}
+\ifCVFull\input{sections/additional}\fi
+\end{document}

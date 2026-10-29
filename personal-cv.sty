@@ -1,0 +1,91 @@
+% Personal extension of Xovee's MIT-licensed academic CV layout.
+% CurVe-inspired management features are independently implemented here.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{personal-cv}[2026/10/29 personal research CV]
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{xovee-cv}
+\RequirePackage{etoolbox}
+\RequirePackage{xstring}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{needspace}
+\RequirePackage{titlesec}
+\RequirePackage[backend=biber,style=numeric,sorting=ydnt,defernumbers=true,
+ giveninits=true,uniquename=false,maxbibnames=99,minbibnames=99,
+ doi=true,url=true,eprint=true,isbn=false,date=year]{biblatex}
+\geometry{a4paper,left=20mm,right=20mm,top=17mm,bottom=17mm,
+ includeheadfoot,headheight=13.6pt,headsep=5mm,footskip=8mm}
+\hypersetup{hidelinks,pdfdisplaydoctitle=true}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2em}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{5pt}{3pt}
+\renewcommand{\cvsection}[1]{\Needspace{4\baselineskip}\section*{#1}}
+\renewcommand{\cvsubsection}[1]{\Needspace{3\baselineskip}\subsection*{#1}}
+\setlength{\cvdateditemindent}{0pt}
+\renewenvironment{cvrecordlist}[1][0pt]{%
+ \begin{itemize}[leftmargin=#1,label={},itemsep=5pt,parsep=1pt,topsep=1pt]
+}{\end{itemize}}
+\renewenvironment{cvcompactlist}{%
+ \begin{itemize}[leftmargin=1.2em,itemsep=1pt,parsep=0pt,topsep=2pt]
+}{\end{itemize}}
+\renewcommand{\cvdistinction}[1]{\textbf{#1}}
+\renewcommand{\makecvheader}{%
+ \thispagestyle{plain}%
+ {\LARGE\bfseries\CVName}\par\vspace{3pt}%
+ \CVPosition\enspace|\enspace\CVInstitution\enspace|\enspace\CVLocation\par
+ \small\href{mailto:\CVEmail}{\CVEmail}\enspace|\enspace
+ \href{\CVWebsite}{Website}\enspace|\enspace
+ \href{\CVGitHub}{GitHub}\normalsize\par\vspace{3pt}%
+}
+\newcommand{\cvtemplatebanner}{%
+ \ifCVTemplate{\footnotesize\textit{Illustrative template: all names, entries and
+ publications are examples. Replace before applying.}\par}\fi
+}
+\fancypagestyle{cvpages}{%
+ \fancyhf{}\fancyhead[L]{\footnotesize\CVName}
+ \fancyhead[R]{\footnotesize Academic CV}
+ \fancyfoot[L]{\footnotesize Updated: \CVUpdated}
+ \fancyfoot[R]{\footnotesize\thepage\,/\,\pageref*{LastPage}}
+ \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{plain}{%
+ \fancyhf{}\fancyfoot[L]{\footnotesize Updated: \CVUpdated}
+ \fancyfoot[R]{\footnotesize\thepage\,/\,\pageref*{LastPage}}
+ \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
+% Run after the original Xovee begin-document defaults.
+\AtBeginDocument{\pagestyle{cvpages}\setlength{\parindent}{0pt}}
+% Exact aliases are a convenience; author annotations resolve ambiguity.
+\newcommand{\CVOwnerAliases}{}
+\newcommand{\cvownernames}[1]{\renewcommand{\CVOwnerAliases}{#1}}
+\newbool{cvowner}
+\def\cvcheckalias#1/#2\cvendalias{%
+ \IfStrEq{\namepartfamily}{#1}{%
+  \IfStrEq{\namepartgiven}{#2}{\booltrue{cvowner}}{}%
+ }{}%
+}
+\newcommand{\cvtryalias}[1]{\cvcheckalias#1\cvendalias}
+\renewcommand*{\mkbibcompletename}[1]{%
+ \begingroup\boolfalse{cvowner}%
+ \expandafter\forcsvlist\expandafter\cvtryalias\expandafter{\CVOwnerAliases}%
+ \ifitemannotation{me}{\booltrue{cvowner}}{}%
+ \ifitemannotation{notme}{\boolfalse{cvowner}}{}%
+ \ifbool{cvowner}{\mkbibbold{#1}}{#1}%
+ \ifitemannotation{cofirst}{\textsuperscript{\ensuremath{\dagger}}}{}%
+ \ifitemannotation{corresponding}{\textsuperscript{*}}{}%
+ \endgroup
+}
+\defbibcheck{cvselection}{\ifCVFull\else\ifkeyword{selected}{}{\skipentry}\fi}
+\defbibheading{cvgroup}[\refname]{\cvsubsection{#1}}
+\setlength{\bibitemsep}{4pt}
+\setlength{\bibparsep}{0pt}
+\AtEveryBibitem{%
+ \clearfield{issn}\clearfield{isbn}\clearfield{month}\clearfield{day}%
+ \iffieldundef{doi}{}{\clearfield{url}}%
+}
+\newcommand{\cvprintpapers}[2]{%
+ \printbibliography[heading=cvgroup,title={#1},keyword={#2},check=cvselection]}
+\endinput

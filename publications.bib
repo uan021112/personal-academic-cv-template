@@ -1,0 +1,65 @@
+% EXAMPLES ONLY. Replace every record with your verified publication data.
+% Exactly ONE status keyword: published / accepted / preprint / underreview.
+% Add selected to include a paper in the application version. Under-review work
+% additionally needs CVShowUnderReviewtrue in cv-settings.tex.
+% author+an positions start at 1. Update annotations when author order changes.
+
+@article{example-published,
+  author       = {Researcher, Alex and Scholar, Casey and Researcher, Amy},
+  author+an    = {1=cofirst; 2=cofirst; 3=notme},
+  title        = {Example: Hierarchical Representations for {3D} Scene Understanding},
+  journaltitle = {Example Journal of Visual Computing},
+  date         = {2026},
+  volume       = {12},
+  number       = {3},
+  pages        = {100-112},
+  keywords     = {published, selected}
+}
+
+@inproceedings{example-accepted,
+  author       = {Scientist, Jordan and Researcher, A. and Collaborator, Sam},
+  author+an    = {2=me},
+  title        = {Example: Geometry-Aware Learning for Embodied Interaction},
+  booktitle    = {Example Conference on Computer Vision},
+  date         = {2026},
+  pubstate     = {accepted},
+  keywords     = {accepted, selected}
+}
+
+@online{example-preprint,
+  author       = {Researcher, Alex and Collaborator, Sam},
+  author+an    = {1=corresponding},
+  title        = {Example: Evaluating Spatial Generalization in Interactive Environments},
+  date         = {2026},
+  url          = {https://example.com/preprint},
+  note         = {Illustrative preprint entry},
+  keywords     = {preprint, selected}
+}
+
+@inproceedings{example-older,
+  author       = {Researcher, Alex and Researcher, Amy},
+  title        = {Example: Reproducible Baselines for Geometric Learning},
+  booktitle    = {Example Workshop on Learning with Geometry},
+  date         = {2025},
+  pages        = {10-18},
+  keywords     = {published}
+}
+
+@unpublished{example-underreview,
+  author       = {Collaborator, Sam and Researcher, Alex},
+  author+an    = {2=me},
+  title        = {Example: Physics-Grounded Evaluation of Interactive Scene Models},
+  date         = {2026},
+  note         = {Manuscript under review; illustrative entry},
+  keywords     = {underreview}
+}
+
+@online{example-same-initial,
+  author       = {Researcher, A. and Researcher, Alex},
+  author+an    = {1=notme; 2=me},
+  title        = {Example: Long-Horizon Research Software and Dataset Documentation},
+  date         = {2024},
+  url          = {https://example.com/research-artifact},
+  note         = {Author disambiguation example; the first author is a different person},
+  keywords     = {preprint}
+}

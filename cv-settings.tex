@@ -1,0 +1,15 @@
+% Default entry point: main.tex (selected application version).
+% Alternate entry point: cv-full.tex (complete master version).
+\newif\ifCVFull
+\ifdefined\CVBuildFull\CVFulltrue\else\CVFullfalse\fi
+% Keep this true while editing example content; turn false after replacing it.
+\newif\ifCVTemplate
+\CVTemplatetrue
+% Under-review work is separate from preprints/accepted papers.
+% Default: shown in the complete master only. Change explicitly if desired.
+\newif\ifCVShowUnderReview
+\ifCVFull\CVShowUnderReviewtrue\else\CVShowUnderReviewfalse\fi
+\newcommand{\cvfullonly}[1]{\ifCVFull#1\fi}
+\newcommand{\cvselectedonly}[1]{\ifCVFull\else#1\fi}
+% A reminder threshold, not an automatic truncation rule.
+\newcommand{\CVApplicationPageTarget}{2}
